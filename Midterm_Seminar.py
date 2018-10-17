@@ -9,7 +9,7 @@ import os
 
 batch_size = 32
 num_classes = 10
-epochs = 100
+epochs = 10
 data_augmentation = True
 num_predictions = 20
 save_dir = os.path.join(os.getcwd(), 'saved_models')
@@ -110,3 +110,15 @@ else:
                         epochs=epochs,
                         validation_data=(x_test, y_test),
                         workers=4)
+						
+# Save model and weights
+if not os.path.isdir(save_dir):
+    os.makedirs(save_dir)
+model_path = os.path.join(save_dir, model_name)
+model.save(model_path)
+print('Saved trained model at %s ' % model_path)
+
+# Score trained model.
+scores = model.evaluate(x_test, y_test, verbose=1)
+print('Test loss:', scores[0])
+print('Test accuracy:', scores[1])
