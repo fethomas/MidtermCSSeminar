@@ -1,8 +1,3 @@
-'''Train a simple deep CNN on the CIFAR10 small images dataset.
-It gets to 75% validation accuracy in 25 epochs, and 79% after 50 epochs.
-(it's still underfitting at that point, though).
-'''
-
 from __future__ import print_function
 import keras
 from keras.datasets import cifar10
@@ -115,15 +110,3 @@ else:
                         epochs=epochs,
                         validation_data=(x_test, y_test),
                         workers=4)
-
-# Save model and weights
-if not os.path.isdir(save_dir):
-    os.makedirs(save_dir)
-model_path = os.path.join(save_dir, model_name)
-model.save(model_path)
-print('Saved trained model at %s ' % model_path)
-
-# Score trained model.
-scores = model.evaluate(x_test, y_test, verbose=1)
-print('Test loss:', scores[0])
-print('Test accuracy:', scores[1])
