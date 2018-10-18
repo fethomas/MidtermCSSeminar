@@ -9,7 +9,7 @@ import os
 
 batch_size = 32
 num_classes = 10
-epochs = 75
+epochs = 100
 data_augmentation = True
 num_predictions = 20
 save_dir = os.path.join(os.getcwd(), 'saved_models')
@@ -49,7 +49,7 @@ model.add(Dense(num_classes))
 model.add(Activation('softmax'))
 
 # initiate RMSprop optimizer
-opt = keras.optimizers.adam(lr=0.0001, decay=1e-6)
+opt = keras.optimizers.rmsprop(lr=0.0001, decay=1e-6)
 
 # Let's train the model using RMSprop
 model.compile(loss='categorical_crossentropy',
