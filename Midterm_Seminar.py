@@ -3,12 +3,13 @@ import keras
 from keras.datasets import cifar10
 from keras.preprocessing.image import ImageDataGenerator
 from keras.models import Sequential
+from keras.utils import np_utils
 from keras.layers import Dense, Dropout, Activation, Flatten, BatchNormalization
 from keras.layers import Conv2D, MaxPooling2D
 from keras import regularizers
 import os
 
-batch_size = 32
+batch_size = 64
 num_classes = 10
 epochs = 100
 data_augmentation = True
@@ -21,6 +22,12 @@ model_name = 'keras_cifar10_trained_model.h5'
 print('x_train shape:', x_train.shape)
 print(x_train.shape[0], 'train samples')
 print(x_test.shape[0], 'test samples')
+
+#z-score
+mean = np.mean(x_train,axis=(0,1,2,3))
+std = np.std(x_train,axis=(0,1,2,3))
+x_train = (x_train-mean)/(std+1e-7)
+x_test = (x_test-mean)/(std+1e-7)
 
 # Convert class vectors to binary class matrices.
 y_train = keras.utils.to_categorical(y_train, num_classes)
