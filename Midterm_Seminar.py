@@ -10,7 +10,7 @@ from keras import regularizers
 import numpy as np
 import os
 
-batch_size = 64
+batch_size = 32
 num_classes = 10
 epochs = 100
 data_augmentation = True
@@ -20,6 +20,11 @@ model_name = 'keras_cifar10_trained_model.h5'
 
 # The data, split between train and test sets:
 (x_train, y_train), (x_test, y_test) = cifar10.load_data()
+x_train = x_train.astype('float32')
+x_test = x_test.astype('float32')
+#x_train /= 255
+#x_test /= 255
+
 print('x_train shape:', x_train.shape)
 print(x_train.shape[0], 'train samples')
 print(x_test.shape[0], 'test samples')
@@ -74,10 +79,10 @@ model.compile(loss='categorical_crossentropy',
               optimizer=opt,
               metrics=['accuracy'])
 
-x_train = x_train.astype('float32')
-x_test = x_test.astype('float32')
-x_train /= 255
-x_test /= 255
+#x_train = x_train.astype('float32')
+#x_test = x_test.astype('float32')
+#x_train /= 255
+#x_test /= 255
 
 if not data_augmentation:
     print('Not using data augmentation.')
