@@ -7,16 +7,25 @@ from keras.utils import np_utils
 from keras.layers import Dense, Dropout, Activation, Flatten, BatchNormalization
 from keras.layers import Conv2D, MaxPooling2D
 from keras import regularizers
+from keras.callbacks import LearningRateScheduler
 import numpy as np
 import os
 
 batch_size = 32
 num_classes = 10
-epochs = 100
+epochs = 150
 data_augmentation = True
 num_predictions = 20
 save_dir = os.path.join(os.getcwd(), 'saved_models')
 model_name = 'keras_cifar10_trained_model.h5'
+
+def lr_schedule(epoch):
+    lrate = 0.001
+    if epoch > 75:
+        lrate = 0.0005
+    elif epoch > 100:
+        lrate = 0.0003        
+    return lrate
 
 # The data, split between train and test sets:
 (x_train, y_train), (x_test, y_test) = cifar10.load_data()
