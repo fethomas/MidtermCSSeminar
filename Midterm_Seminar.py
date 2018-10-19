@@ -7,6 +7,7 @@ from keras.utils import np_utils
 from keras.layers import Dense, Dropout, Activation, Flatten, BatchNormalization
 from keras.layers import Conv2D, MaxPooling2D
 from keras import regularizers
+import numpy as np
 import os
 
 batch_size = 64
