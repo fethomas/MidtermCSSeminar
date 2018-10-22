@@ -51,28 +51,28 @@ y_test = keras.utils.to_categorical(y_test, num_classes)
 weight_decay = 1e-4
 model = Sequential()
 model.add(Conv2D(32, (3,3), padding='same', kernel_regularizer=regularizers.l2(weight_decay), input_shape=x_train.shape[1:]))
-model.add(Activation('elu'))
+model.add(Activation('relu'))
 model.add(BatchNormalization())
 model.add(Conv2D(32, (3,3), padding='same', kernel_regularizer=regularizers.l2(weight_decay)))
-model.add(Activation('elu'))
+model.add(Activation('relu'))
 model.add(BatchNormalization())
 model.add(MaxPooling2D(pool_size=(2,2)))
 model.add(Dropout(0.2))
  
 model.add(Conv2D(64, (3,3), padding='same', kernel_regularizer=regularizers.l2(weight_decay)))
-model.add(Activation('elu'))
+model.add(Activation('relu'))
 model.add(BatchNormalization())
 model.add(Conv2D(64, (3,3), padding='same', kernel_regularizer=regularizers.l2(weight_decay)))
-model.add(Activation('elu'))
+model.add(Activation('relu'))
 model.add(BatchNormalization())
 model.add(MaxPooling2D(pool_size=(2,2)))
 model.add(Dropout(0.3))
  
 model.add(Conv2D(128, (3,3), padding='same', kernel_regularizer=regularizers.l2(weight_decay)))
-model.add(Activation('elu'))
+model.add(Activation('relu'))
 model.add(BatchNormalization())
 model.add(Conv2D(128, (3,3), padding='same', kernel_regularizer=regularizers.l2(weight_decay)))
-model.add(Activation('elu'))
+model.add(Activation('relu'))
 model.add(BatchNormalization())
 model.add(MaxPooling2D(pool_size=(2,2)))
 model.add(Dropout(0.4))
@@ -81,7 +81,7 @@ model.add(Flatten())
 model.add(Dense(num_classes, activation='softmax'))
 
 # initiate RMSprop optimizer
-opt = keras.optimizers.adam(lr=0.001, decay=1e-6)
+opt = keras.optimizers.adam(lr=0.003, decay=1e-6)
 
 # Let's train the model using RMSprop
 model.compile(loss='categorical_crossentropy',
