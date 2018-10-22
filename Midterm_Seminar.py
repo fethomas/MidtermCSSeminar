@@ -14,7 +14,7 @@ import os
 
 batch_size = 32
 num_classes = 10
-epochs = 10
+epochs = 130
 data_augmentation = True
 num_predictions = 20
 save_dir = os.path.join(os.getcwd(), 'saved_models')
@@ -52,28 +52,28 @@ y_test = keras.utils.to_categorical(y_test, num_classes)
 weight_decay = 1e-4
 model = Sequential()
 model.add(Conv2D(32, (3,3), padding='same', kernel_regularizer=regularizers.l2(weight_decay), input_shape=x_train.shape[1:]))
-model.add(Activation('elu'))
+model.add(Activation('ELU'))
 model.add(BatchNormalization())
 model.add(Conv2D(32, (3,3), padding='same', kernel_regularizer=regularizers.l2(weight_decay)))
-model.add(Activation('elu'))
+model.add(Activation('ELU'))
 model.add(BatchNormalization())
 model.add(MaxPooling2D(pool_size=(2,2)))
 model.add(Dropout(0.2))
  
 model.add(Conv2D(64, (3,3), padding='same', kernel_regularizer=regularizers.l2(weight_decay)))
-model.add(Activation('elu'))
+model.add(Activation('ELU'))
 model.add(BatchNormalization())
 model.add(Conv2D(64, (3,3), padding='same', kernel_regularizer=regularizers.l2(weight_decay)))
-model.add(Activation('elu'))
+model.add(Activation('ELU'))
 model.add(BatchNormalization())
 model.add(MaxPooling2D(pool_size=(2,2)))
 model.add(Dropout(0.3))
  
 model.add(Conv2D(128, (3,3), padding='same', kernel_regularizer=regularizers.l2(weight_decay)))
-model.add(Activation('elu'))
+model.add(Activation('ELU'))
 model.add(BatchNormalization())
 model.add(Conv2D(128, (3,3), padding='same', kernel_regularizer=regularizers.l2(weight_decay)))
-model.add(Activation('elu'))
+model.add(Activation('ELU'))
 model.add(BatchNormalization())
 model.add(MaxPooling2D(pool_size=(2,2)))
 model.add(Dropout(0.4))
@@ -160,12 +160,12 @@ history_dict = history.history
 
 print(history_dict.keys()) 
 
-plt.plot(range(10), history_dict['loss'], label='Loss') 
-plt.plot(range(10), history_dict['acc'], label='Accuracy') 
-plt.plot(range(10), history_dict['val_acc'], label='Validation Accuracy') 
+plt.plot(range(130), history_dict['loss'], label='Loss') 
+plt.plot(range(130), history_dict['acc'], label='Accuracy') 
+plt.plot(range(130), history_dict['val_acc'], label='Validation Accuracy') 
 plt.xlabel('Epoch')
 plt.ylabel('Performance')
 plt.legend()
 plt.show()
-plt.imshow(x_train[0], cmap=plt.get_cmap('gray'),vmin=0,vmax=255)
+plt.imshow(x_train[0], cmap=plt.get_cmap('gray'))
 plt.show()
