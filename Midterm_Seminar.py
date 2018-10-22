@@ -160,9 +160,9 @@ history_dict = history.history
 
 print(history_dict.keys()) 
 
-plt.plot(range(50), history_dict['loss'], label='Loss') 
-plt.plot(range(50), history_dict['categorical_accuracy'], label='Accuracy') 
-plt.plot(range(50), history_dict['val_categorical_accuracy'], label='Validation Accuracy') 
+plt.plot(range(20), history_dict['loss'], label='Loss') 
+plt.plot(range(20), history_dict['categorical_accuracy'], label='Accuracy') 
+plt.plot(range(20), history_dict['val_categorical_accuracy'], label='Validation Accuracy') 
 plt.xlabel('Epoch')
 plt.ylabel('Performance')
 plt.legend()
