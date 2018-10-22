@@ -84,7 +84,7 @@ model.add(Dense(num_classes, activation='softmax'))
 opt = keras.optimizers.adam(lr=0.001, decay=1e-6)
 
 # Let's train the model using RMSprop
-model.compile(loss='mse',
+model.compile(loss='categorical_crossentropy',
               optimizer=opt,
               metrics=['accuracy'])
 
