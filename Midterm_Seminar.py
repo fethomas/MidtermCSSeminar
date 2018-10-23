@@ -11,13 +11,14 @@ from keras.callbacks import LearningRateScheduler
 import numpy as np
 import os
 
-batch_size = 32
+batch_size = 64
 num_classes = 10
 epochs = 120
 data_augmentation = True
 num_predictions = 20
 save_dir = os.path.join(os.getcwd(), 'saved_models')
 model_name = 'keras_cifar10_trained_model.h5'
+
 
 def lr_schedule(epoch):
     lrate = 0.001
@@ -80,10 +81,9 @@ model.add(Dropout(0.4))
 model.add(Flatten())
 model.add(Dense(num_classes, activation='softmax'))
 
-# initiate RMSprop optimizer
+# initiate adam optimizer
 opt = keras.optimizers.adam(lr=0.0001, decay=1e-6)
 
-# Let's train the model using RMSprop
 model.compile(loss='categorical_crossentropy',
               optimizer=opt,
               metrics=['accuracy'])
