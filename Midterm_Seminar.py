@@ -87,7 +87,7 @@ model.add(Flatten())
 model.add(Dense(num_classes, activation='softmax'))
 
 # initiate adam optimizer
-opt = keras.optimizers.adam(lr=0.0001, decay=1e-6)
+opt = keras.optimizers.SGD(lr=0.01, momentum = 0.0, decay=1e-6, nesterov=False )
 
 model.compile(loss='categorical_crossentropy',
               optimizer=opt,
