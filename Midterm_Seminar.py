@@ -1,3 +1,7 @@
+#Midterm Project: CNN network on Cifar10 Dataset
+#Felix Thomas & Jake O'Neill
+#CS Seminar
+
 from __future__ import print_function
 import keras
 from keras.datasets import cifar10
@@ -11,9 +15,9 @@ from keras.callbacks import LearningRateScheduler
 import numpy as np
 import os
 
-batch_size = 64
+batch_size = 32
 num_classes = 10
-epochs = 120
+epochs = 130
 data_augmentation = True
 num_predictions = 20
 save_dir = os.path.join(os.getcwd(), 'saved_models')
