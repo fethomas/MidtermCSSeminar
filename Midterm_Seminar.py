@@ -15,6 +15,7 @@ from keras.callbacks import LearningRateScheduler
 import numpy as np
 import os
 
+#setting hyperparameters 
 batch_size = 32
 num_classes = 10
 epochs = 130
