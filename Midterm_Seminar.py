@@ -16,7 +16,7 @@ import numpy as np
 import os
 
 #setting hyperparameters 
-batch_size = 32
+batch_size = 64
 num_classes = 10
 epochs = 130
 data_augmentation = True
