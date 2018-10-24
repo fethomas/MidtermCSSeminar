@@ -18,7 +18,7 @@ import os
 #setting hyperparameters 
 batch_size = 32
 num_classes = 10
-epochs = 155
+epochs = 140
 data_augmentation = True
 num_predictions = 20
 save_dir = os.path.join(os.getcwd(), 'saved_models')
@@ -89,7 +89,7 @@ model.add(Dense(num_classes, activation='softmax'))
 # initiate adam optimizer
 opt = keras.optimizers.adam(lr=0.0001, decay=1e-6)
 
-model.compile(loss='categorical_crossentropy',
+model.compile(loss='sparse_categorical_crossentropy',
               optimizer=opt,
               metrics=['accuracy'])
 
