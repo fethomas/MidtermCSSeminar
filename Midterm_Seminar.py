@@ -89,7 +89,7 @@ model.add(Dense(num_classes, activation='softmax'))
 # initiate adam optimizer
 opt = keras.optimizers.adam(lr=0.0001, decay=1e-6)
 
-model.compile(loss='sparse_categorical_crossentropy',
+model.compile(loss='categorical_crossentropy',
               optimizer=opt,
               metrics=['accuracy'])
 
